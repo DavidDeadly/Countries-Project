@@ -16,6 +16,6 @@ conn.sync({ force: true })
       Activity.create({ name: "Chess", difficulty: "5"})
     ]).then(res => {
       console.log(`Default activities preloaded!!`);
-    }).catch(err =>  console.warn(err));
+    }).catch(err => console.warn(`${err}\nOops! -_-`));
 
-  });
+  })
