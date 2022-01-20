@@ -4,6 +4,7 @@ const { Op } = require("sequelize");
 const fetch = require("cross-fetch");
 
 const countries = Router();
+const vF = { exclude: ["sName"] };
 
 countries.get("/", async (req, res) => {
   const { name } = req.query;
@@ -11,10 +12,11 @@ countries.get("/", async (req, res) => {
   const queryObj = name ? {
     where: {
       sName: {
-        [Op.substring]: `%${name}%`
+        [Op.substring]: `%${name.toLowerCase()}%`
       }
-    }
-  } : {};
+    }, 
+    attributes: vF
+  } : { attributes: vF };
 
   const countriesList = await Country.findAll(queryObj);
 
@@ -33,11 +35,12 @@ countries.get("/", async (req, res) => {
             capital: !capital ? null : capital[0],
             subregion: subregion,
             area: area,
-            population: population,
-            sName: name.common.toLowerCase()
+            population: population
           }
         }));
-      }).then(async ()=> res.status(200).json(await Country.findAll()))
+      }).then(async ()=> res.status(200).json(await Country.findAll({
+        attributes: vF
+      })));
   })();
 });
 
@@ -46,7 +49,13 @@ countries.get("/:code", async (req, res) => {
     const { code } = req.params;
     // Basic data from db;
 
-    const { dataValues: country } = await Country.findByPk(code.toUpperCase());
+    const { dataValues: country } = await Country.findOne({
+      where: {
+        code: code.toUpperCase()
+      }, 
+      attributes: vF
+    }
+    );
     res.status(200).json(country);
 
     //Advanced data from Api;

@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
+
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('country', {
@@ -12,6 +13,10 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      set (value) {
+        this.setDataValue("sName", value.toLowerCase());
+        this.setDataValue("name", value);
+      }
     },
     flagImg: {
       type: DataTypes.STRING,
@@ -35,8 +40,10 @@ module.exports = (sequelize) => {
     },
     sName: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
+      allowNull: null
+    }
+  } , {
+    timestamps: false,
   });
 };
 
