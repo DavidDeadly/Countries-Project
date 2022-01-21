@@ -1,5 +1,5 @@
-export { default as Home }  from "./home.jsx";
-export { default as Countries } from "./countries.jsx";
-export { default as Country } from "./country.jsx";
-export { default as Activity } from "./activity.jsx";
-export { default as Error } from "./error.jsx"
+export { default as Home }  from "./Home.jsx";
+export { default as Countries } from "./Countries.jsx";
+export { default as Country } from "./Country.jsx";
+export { default as Activity } from "./Activity.jsx";
+export { default as Error } from "./Error.jsx"
