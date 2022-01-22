@@ -7,7 +7,27 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  iframe {
+  .App-logo {
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  body > iframe {
     display: none;
   }
 
@@ -17,7 +37,6 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     margin: 0;
-    min-height: 100vh;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
