@@ -30,9 +30,17 @@ const Pausebtn = styled(PrePausebtn)`
   background: transparent;
   border: hidden;
   border-radius: 50px;
+  transition: all .5s;
 
   @media (max-width: 750px) {
     display: none;
+  }
+
+  @media (min-width: 750px) {
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
   }
 `
 

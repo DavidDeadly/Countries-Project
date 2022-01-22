@@ -9,17 +9,17 @@ const ButtonIn = styled(Button)`
   color: white;
   border-style: outset;
   border-width: 5px;
-  border-color: black white white black;
+  border-color: black;
   border-radius: 15px;
   animation: press ease-in-out 5s infinite; 
-
+  transition: all .5s;
   
-  @media (min-width: 950px) {
+  
+  @media (min-width: 750px) {
     :hover {
       cursor: pointer;
-      border-color: white black black white;
-      background-color: #d3d3d347;
-      color: black;
+      background-color: transparent;
+      transform: scale(1.1);
     }
   }
 
