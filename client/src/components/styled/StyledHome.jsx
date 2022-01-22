@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-import PreHome from "../Home";
 import img from "../../assets/static-gray-world-map.png";
 
-const Home = styled(PreHome)`
+const StyledHome = styled.div`
   display: grid;
   place-items: center;
   width: 100%;
@@ -119,4 +118,4 @@ const Home = styled(PreHome)`
   }
 `
 
-export default Home;
+export default StyledHome;

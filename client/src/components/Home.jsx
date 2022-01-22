@@ -6,8 +6,9 @@ import img from "../assets/static-gray-world-map.png";
 import vid from "../assets/gray-world-map.mp4";
 import ButtonIn from './styled/ButtonIn';
 import Pausebtn from './styled/PauseBtn';
+import StyledHome from "./styled/StyledHome.jsx";
 
-const PreHome = ({ className }) => {
+const Home = () => {
   const video = useRef();
 
   const pp = useCallback(
@@ -47,7 +48,7 @@ const PreHome = ({ className }) => {
   }, [pp]);
 
   return (
-    <div className={className}>
+    <StyledHome>
       <video id="bg-video" autoPlay loop muted poster={img} ref={video}>
         <source src={vid}/>
       </video>
@@ -58,8 +59,8 @@ const PreHome = ({ className }) => {
         </Link>
         <Pausebtn className="ps-btn" onClick={(e) =>  pp(e, video)}/>
       </div>
-    </div>
+    </StyledHome>
   );
 };
 
-export default PreHome;
+export default Home;
