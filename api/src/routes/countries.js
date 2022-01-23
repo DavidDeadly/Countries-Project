@@ -12,7 +12,7 @@ countries.get("/", async (req, res) => {
   const queryObj = name ? {
     where: {
       sName: {
-        [Op.substring]: `${name.toLowerCase()}%`
+        [Op.startsWith]: `${name.toLowerCase()}`
       }
     }, 
     attributes: vF,

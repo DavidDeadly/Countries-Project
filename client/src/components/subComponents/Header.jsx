@@ -7,7 +7,6 @@ import ContinentsSelector from './ContinentsSelector.jsx';
 import DataList from './DataList.jsx';
 import SortingForm from './SortingForm.jsx';
 import { querySearch } from '../../redux/actions/querySearch.js';
-import { getCountries } from '../../redux/actions/getCountries.js';
 
 const Header = () => {
   const [search, setSearch] = useState();
