@@ -55,7 +55,7 @@ const Home = () => {
       <div>
         <h1 data-text="Countries App">Countries App</h1>
         <Link to="/countries">
-          <ButtonIn legend="Hello World!"/>
+          <ButtonIn>Hello World!</ButtonIn>
         </Link>
         <Pausebtn className="ps-btn" onClick={(e) =>  pp(e, video)}/>
       </div>

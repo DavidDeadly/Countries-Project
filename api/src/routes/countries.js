@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Country } = require('../db.js');
+const { Country, Activity } = require('../db.js');
 const { Op } = require("sequelize");
 const fetch = require("cross-fetch");
 
@@ -15,16 +15,18 @@ countries.get("/", async (req, res) => {
         [Op.substring]: `%${name.toLowerCase()}%`
       }
     }, 
-    attributes: vF
-  } : { attributes: vF };
+    attributes: vF,
+    include: Activity
+  } : { attributes: vF, include: Activity };
+  const activities = await Activity.findAll();
 
   const countriesList = await Country.findAll(queryObj);
 
-  countriesList.length ? res.status(200).json(countriesList)
+  countriesList.length ? res.status(200).json({countries: countriesList, activities})
   : (() => {
     if(name) return res.status(404).send("No matches");
     fetch("https://restcountries.com/v3/all")
-      .then(res => res.json())
+      .then(r => r.json())
       .then(countries => {
         return Country.bulkCreate(countries.map(({ name, flags, region, capital, subregion, population, area, cca3 }) => {
           return {
@@ -38,9 +40,13 @@ countries.get("/", async (req, res) => {
             population: population
           }
         }));
-      }).then(async ()=> res.status(200).json(await Country.findAll({
-        attributes: vF
-      })));
+      }).then(async (r)=> {
+        await Promise.all(r.map(r => r.addActivities([1,2,3,4])));
+        res.status(200).json({countries: await Country.findAll({
+          attributes: vF, include: Activity
+        }), activities});
+      }
+      );
   })();
 });
 
@@ -48,12 +54,12 @@ countries.get("/:code", async (req, res) => {
   try {
     const { code } = req.params;
     // Basic data from db;
-
     const { dataValues: country } = await Country.findOne({
       where: {
         code: code.toUpperCase()
       }, 
-      attributes: vF
+      attributes: vF,
+      include: Activity
     }
     );
     res.status(200).json(country);

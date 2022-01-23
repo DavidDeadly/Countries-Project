@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-import Button from '../reusable/Button';
-
-const ButtonIn = styled(Button)`
+const ButtonIn = styled.button`
   font-size: 2rem;
   padding: 0.625rem;
   background-color: gray;

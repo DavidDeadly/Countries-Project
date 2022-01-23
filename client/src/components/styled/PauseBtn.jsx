@@ -1,27 +1,19 @@
 import React from 'react';
 import styled from "styled-components";
-import Button from "../reusable/Button";
 import { IconContext } from "react-icons";
 import { HiOutlineGlobe } from "react-icons/hi";
 
-const PrePausebtn = ({ className, onClick }) => {
-  
-  const iconStyles = {
-    height: "10x",
-    size: "10x",
-  }
-
+const IconBtn = ({ className, onClick }) => {
   return (
-    <Button className={className} legend={
-      <IconContext.Provider value={iconStyles}>
+    <button className={className} onClick={onClick}>
+    <IconContext.Provider value={{size: "5rem"}}>
         <HiOutlineGlobe id="world" className='App-logo'/>
       </IconContext.Provider>
-  } onClick={onClick}/>
+    </button>
   );
 }
 
-const Pausebtn = styled(PrePausebtn)`
-
+const Pausebtn = styled(IconBtn)`
   display: block;
   position: absolute;
   top: 80%;
