@@ -1,6 +1,6 @@
 export const SORT_COUNTRIES = "sortCountries";
 
-export function countriesSort({ desc, param: p }) {
+export function countriesSort({ param: p, desc }) {
   const sorting = desc ? arr => arr.sort((a, b) => a[p] > b[p] ? -1 : 1)
   : arr => arr.sort((a, b) => a[p] > b[p] ? 1 : -1);
   

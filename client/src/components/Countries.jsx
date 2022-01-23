@@ -8,6 +8,7 @@ import Header from "./subComponents/Header";
 
 export default function Countries () {
   const countries = useSelector(state => state.countries);
+  const querySearch = useSelector(state => state.querySearch);
   const { id } = useParams();
   
   return (
@@ -16,7 +17,17 @@ export default function Countries () {
       ( <div>
         <Header></Header>
         <CoutriesContainer>
-        {countries.map(({ name, code, flagImg, continent, filtered }) => {
+        {querySearch.length ? querySearch.map((name, code, flagImg, continent, filtered) => { return (
+          <CountryCard 
+          key={code}
+          name={name} 
+          code={code} 
+          flagImg={flagImg} 
+          continent={continent}
+          filtered={filtered}
+        />
+        )})
+        :countries.map(({ name, code, flagImg, continent, filtered }) => {
           return (
             <CountryCard 
               key={code}

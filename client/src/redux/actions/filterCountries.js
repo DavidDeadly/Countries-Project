@@ -1,47 +1,46 @@
-export const FILTER_COUNTRIES = "filterCountries";
+export const FILTER_SORT = "filterCountries";
 
-export const filterCountries = ({ value, desfilter, key }) => {
-  const filtering = key === "activities" ? (countries) => {
+export const filterCountries = (conditions, And) => {
+  function filteringAnd (countries) {
     return countries.map(c => {
-      const act = c.activities.find(a => a.id === value);
-      if(!act) c.filtered = true;
-      else c.filtered = false;
+      if(conditions.length === 0) {
+        c.filtered = false;
+        return c
+      } 
+      conditions.every(con => {
+        if (c[con[0]] instanceof Array) {
+          const x = c[con[0]].find(e => e.id === con[1])
+          if(x) return true;
+        }
+        if(c[con[0]] === con[1]) return true;
+        return false;
+      }) ? c.filtered = false : c.filtered = true;
       return c;
     });
   }
-  : (countries) => {
+  
+  function filteringOr (countries) {
     return countries.map(c => {
-      if(c.continent !== value) c.filtered = true;
-      else c.filtered = false;
-      return c;
-    })
-  };
-  const desfiltering = key === "activities" ? (countries) => {
-    return countries.map(c => {
-      const act = c.activities.find(a => a.id === value);
-      if(!act) c.filtered = false;
+      if(conditions.length === 0) {
+        c.filtered = false;
+        return c
+      } 
+      conditions.some(con => {
+        if (c[con[0]] instanceof Array) {
+          const x = c[con[0]].find(e => e.id === con[1])
+          if(x) return true;
+        }
+        if(c[con[0]] === con[1]) return true;
+        return false;
+      }) ? c.filtered = false : c.filtered = true;
       return c;
     });
   }
-  : (countries) => {
-    return countries.map(c => {
-      if(c.continent !== value) c.filtered = false;
-      return c;
-    });
-  };
+
 
   return {
-    type: FILTER_COUNTRIES,
-    payload: desfilter ? desfiltering : filtering
+    type: FILTER_SORT,
+    payload: And ? filteringAnd : filteringOr
   }
+
 }
-
-// Expected Input:
-// {
-//    value: "Asia" / "Soccer"
-//    desfilter: true / false:default
-//    key: continent:default / actvities 
-// }
-
-//Reducer job:
-//  action.parload(countries);
