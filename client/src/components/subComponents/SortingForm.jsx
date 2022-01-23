@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { countriesSort } from "../../redux/actions/sortCountries.js"
-import $ from "jquery";
 
 const registerClicks = {
   alph: false,
