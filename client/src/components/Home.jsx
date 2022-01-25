@@ -48,18 +48,18 @@ const Home = () => {
   }, [pp]);
 
   return (
-    <StyledHome>
-      <video id="bg-video" autoPlay loop muted poster={img} ref={video}>
-        <source src={vid}/>
-      </video>
-      <div>
-        <h1 data-text="Countries App">Countries App</h1>
-        <Link to="/countries">
-          <ButtonIn>Hello World!</ButtonIn>
-        </Link>
-        <Pausebtn className="ps-btn" onClick={(e) =>  pp(e, video)}/>
-      </div>
-    </StyledHome>
+      <StyledHome>
+        <video id="bg-video" autoPlay loop muted poster={img} ref={video}>
+          <source src={vid}/>
+        </video>
+        <div>
+          <h1 data-text="Countries App">Countries App</h1>
+          <Link to="/countries">
+            <ButtonIn>Hello World!</ButtonIn>
+          </Link>
+          <Pausebtn className="ps-btn" onClick={(e) =>  pp(e, video)}/>
+        </div>
+      </StyledHome>
   );
 };
 

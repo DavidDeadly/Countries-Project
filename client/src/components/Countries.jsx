@@ -1,11 +1,11 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { useState } from "react";
 import { Outlet, useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
 import CoutriesContainer from "./styled/CountriesContainer";
 import Header from "./subComponents/Header";
 import Pagination from "./subComponents/pagination";
-const CountryCard = lazy(() => import("./subComponents/CountryCard.jsx"));
+import CountryCard from "./subComponents/CountryCard"
 
 export default function Countries () {
   const [currentPage, setCurrentPage] = useState(1)
@@ -24,15 +24,14 @@ export default function Countries () {
         <CoutriesContainer>
         {countries.map(({ name, code, flagImg, continent, filtered }) => {
           return (             
-            <Suspense fallback={<h1>...</h1>} key={code}>
               <CountryCard
+                key={code}
                 name={name} 
                 code={code} 
                 flagImg={flagImg} 
                 continent={continent}
                 filtered={filtered}
               />
-            </Suspense>
           )
         })}
         </CoutriesContainer>
