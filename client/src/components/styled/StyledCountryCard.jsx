@@ -9,6 +9,11 @@ const StyledCountryCard = styled.div`
   width: 100%;
   height: auto;
 
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
   & img {
     width: 100%;
     height: auto;
