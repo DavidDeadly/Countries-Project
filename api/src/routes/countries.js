@@ -41,7 +41,7 @@ countries.get("/", async (req, res) => {
           }
         }));
       }).then(async (r)=> {
-        await Promise.all(r.map(r => r.addActivities([1,2,3,4])));
+        await Promise.all(r.map(r => r.addActivities([1,2,3,4,5])));
         res.status(200).json({countries: await Country.findAll({
           attributes: vF, include: Activity
         }), activities});

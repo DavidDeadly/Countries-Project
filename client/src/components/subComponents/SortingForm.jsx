@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
-import { countriesSort } from "../../redux/actions/sortCountries.js"
+import { countriesSort } from "../../redux/actions/index.js";
 
 const registerClicks = {
   alph: false,

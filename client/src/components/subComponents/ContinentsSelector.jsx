@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterCountries } from '../../redux/actions/filterCountries';
+import { filterCountries } from '../../redux/actions/index.js';
 
 const ContinentsSelector = () => {
   const [conditions, setConditions] = useState([]);

@@ -6,7 +6,7 @@ import HeaderContainer from '../styled/HeaderContainer.jsx';
 import ContinentsSelector from './ContinentsSelector.jsx';
 import DataList from './DataList.jsx';
 import SortingForm from './SortingForm.jsx';
-import { querySearch } from '../../redux/actions/querySearch.js';
+import { querySearch } from '../../redux/actions/index.js';
 
 const Header = () => {
   const [search, setSearch] = useState();

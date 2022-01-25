@@ -15,8 +15,6 @@ export default function Countries () {
   const iLastCountry = currentPage * 10, iFirstCountry = iLastCountry - 10;
   const countryToShow = totalCountries.filter(c => c.filtered === false);
   const countries = countryToShow.slice(iFirstCountry, iLastCountry);
-  
-  console.log(code);
   return (
     <React.Fragment>
       { code ? <></> : 

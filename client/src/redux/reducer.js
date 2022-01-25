@@ -1,9 +1,10 @@
-import { GET_COUNTRIES, SORT_COUNTRIES, FILTER_SORT, QUERY_SEARCH } from "./actions";
+import { GET_COUNTRIES, SORT_COUNTRIES, FILTER_SORT, QUERY_SEARCH, GET_DETAILED } from "./actions";
 
 const initialState = {
   countries: [],
   activities: [],
-  filteredState: []
+  filteredState: [],
+  country: null
 }
 
 const reducer =  (state = initialState, { type, payload }) => {
@@ -14,6 +15,11 @@ const reducer =  (state = initialState, { type, payload }) => {
         ...state,
         activities: payload.activities,
         countries: payload.countries
+      }
+    case GET_DETAILED:
+      return {
+        ...state,
+        country: payload
       }
     case SORT_COUNTRIES: 
       return {
