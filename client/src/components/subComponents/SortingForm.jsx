@@ -2,16 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { countriesSort } from "../../redux/actions/index.js";
 
-const registerClicks = {
-  alph: false,
-  popu: false
-}
-
-const SortingForm = () => {
+const SortingForm = ({registerClicks}) => {
   const [ sortingRules, setSortingRules ] = useState({});
   const dispatch = useDispatch();
 
   const onHandleParam = ({target}) => {
+    console.log(registerClicks);
     if(registerClicks[target.id]) {
       registerClicks[target.id] = false;
       target.checked = false;
@@ -37,17 +33,17 @@ const SortingForm = () => {
       <div>
         <label htmlFor="alph">
           By name:
-          <input type="radio" name="param" id="alph" value="name" onClick={onHandleParam}/>
+          <input className="st-input" type="radio" name="param" id="alph" value="name" onClick={onHandleParam}/>
         </label>
         <label htmlFor="popu">
           By population:
-          <input type="radio" name="param" id="popu" value="population"onClick={onHandleParam}/>
+          <input className="st-input" type="radio" name="param" id="popu" value="population"onClick={onHandleParam}/>
         </label>
       </div>
       <div>
         <label htmlFor="desc">
           Descendant:
-          <input type="checkbox" name="desc" id="desc" onClick={onHandleDesc}/>
+          <input className="st-input" type="checkbox" name="desc" id="desc" onClick={onHandleDesc}/>
         </label>
       </div>
     </div>

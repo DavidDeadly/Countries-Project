@@ -12,6 +12,29 @@ const HeaderContainer = styled.div`
     padding: 10px;
   }
 
+  #head {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    
+    #btn-act {
+      font-size: 1.5rem;
+      padding: 5px;
+      margin: 5px;
+      height: 80%;
+      color: black;
+      border: 5px gray solid;
+      background-color: transparent;
+
+      :hover {
+        cursor: pointer;
+        background-color: gray;
+        color: white;
+      }
+    }
+  }
+
+
   .sort {
     display: flex;
     flex-direction: column;

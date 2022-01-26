@@ -3,21 +3,23 @@ const { Activity } =require("../db.js");
 
 const activity = Router();
 
-activity.post("/", (req, res) => {
-  const { name, difficulty, duration, season } = req.body;
+activity.post("/", async (req, res) => {
+  const { name, difficulty, duration, season, countries } = req.body;
 
   try {
-    Activity.create({
+    const act = await Activity.create({
       name,
       difficulty,
       duration,
       season,
     });
 
-    res.status(201).json("Activity created");
+    act.setCountries(countries);
+
+    res.status(201).json("Activity Succesfully Created");
   } catch (err) {
     console.error(err);
-    res.sendStatus(400);
+    res.sendStatus(400).json("Activity Not Created");
   }
 
 

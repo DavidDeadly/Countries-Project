@@ -7,12 +7,7 @@ const ContinentsSelector = () => {
   const dispatch = useDispatch();
 
   const onHandleContinentChange = (e) => {
-    setConditions([...e.target.options].reduce((a, b) => {
-      if(b.selected) {
-        a.push([b.parentElement.name, b.value]);
-      }
-      return a;
-    }, []));
+    setConditions([...e.target.selectedOptions].map(opt => [opt.parentElement.name, opt.value]));
   }
 
   useEffect(() => {
