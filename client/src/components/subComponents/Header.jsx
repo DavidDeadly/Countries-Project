@@ -33,25 +33,24 @@ const Header = ({onFilter}) => {
   }, [dispatch, search]);
 
   return (
-    <HeaderContainer>
-      <div id="head">
+    <>
+      <HeaderContainer>
         <Link to="/">
           <h1>Countries App</h1>
         </Link>
-        <Link to="/activity">
-          <button id="btn-act">New Activity</button>
-        </Link>
-      </div>
-      <div id="inputs">
-        <div>
-          <label htmlFor="searchbar">Search Bar</label>
-          <input id="searchbar" type="search" name="country-name" list="countriesList" placeholder="search por a country" onChange={onHandleSearch}/>
-          <DataList id="countriesList"/>
+        <div id="sr-cont">
+            <input id="searchbar" type="search" name="country-name" list="countriesList" placeholder="search por a country" onChange={onHandleSearch}/>
+            <DataList id="countriesList"/>
         </div>
+      </HeaderContainer>
+      <div id="sidebar">
+        <Link to="/activity">
+            <button id="btn-act">New Activity</button>
+        </Link>
         <FiltersSelector onFilter={onFilter}/>
         <SortingForm registerClicks={registerClicks}/>
       </div>
-    </HeaderContainer>
+    </>
   );
 }
 

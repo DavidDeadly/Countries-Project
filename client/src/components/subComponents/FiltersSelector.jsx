@@ -16,7 +16,7 @@ const FiltersSelector = ({onFilter}) => {
         setConditions([...updatedConditions, actCond]);
       })()
     }
-    setConditions([...conditions, ...[...e.target.selectedOptions].map(opt => [opt.parentElement.name, opt.value])]);
+    setConditions([...conditions.filter(c => c.name === "activities"), ...[...e.target.selectedOptions].map(opt => [opt.parentElement.name, opt.value])]);
   }
   
   useEffect(() => {
@@ -27,7 +27,7 @@ const FiltersSelector = ({onFilter}) => {
   return (
     <div id="filters">
       <div id="cont-container">
-        <label htmlFor='continents'>Search by continents:</label>
+        <label htmlFor='continents'>By continents:</label>
         <select name="continent" id="continents" multiple size={6} onChange={onHandleFilter} onClick={onFilter}>
           <option value="Asia">Asia</option>
           <option value="Africa">Africa</option>
@@ -38,13 +38,13 @@ const FiltersSelector = ({onFilter}) => {
         </select>
       </div>
       <div id="act-container">
-        <label htmlFor="activities">Search by activities</label>
+        <label htmlFor="activities">By activities:</label>
         <select name="activities" id="activities" disabled={!activities.length ? true:false} onChange={onHandleFilter} onClick={onFilter}>
           {activities.length && <option></option>}
           {activities?.map(a => <option key={a.id} value={a.id}>{a.name}</option> )}
         </select>
       </div>
-
+      <h3>Filter</h3>
     </div>
   );
 }

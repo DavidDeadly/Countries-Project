@@ -9,21 +9,30 @@ const PagesList = styled.ul`
   max-width: max-content;
   margin: 25px auto;
 
-  li {
+  .cr-pg {
+    background-color: blue;
+  }
+
+  button {
     padding: 10px;
     background-color: pink;
   }
 `
 
-const Pagination = ({numCountries, onPageChange}) => {
+const Pagination = ({numCountries, onPageChange, currentPage}) => {
   const numPages = Math.ceil(numCountries/10)
   const pages = [];
   for(let i = 1; i < numPages; i++) pages.push(i);
+
+  const onHandlePageChange = (event, n) => {
+    event.preventDefault();
+    onPageChange(n);
+  }
   
   return (
     <PagesList>
       { pages.map(n => (
-        <button onClick={() => onPageChange(n)} key={n}>
+        <button className={currentPage === n ? "cr-pg" : "pg-btn"} onClick={(e) => onHandlePageChange(e, n)} key={n}>
           <li>{n}</li>
         </button>
       )) }   

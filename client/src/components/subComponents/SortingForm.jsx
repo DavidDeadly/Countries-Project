@@ -27,7 +27,7 @@ const SortingForm = ({registerClicks}) => {
   }, [dispatch, sortingRules]);
 
   return (
-    <div className="sort">
+    <div id="sort">
       <h3>Sort</h3>
       <div>
         <label htmlFor="alph">

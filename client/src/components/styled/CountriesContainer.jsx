@@ -5,7 +5,7 @@ const CoutriesContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 5rem;
   margin: auto;
-  width: 90vw;
+  width: 100%;
 `
 
 export default CoutriesContainer;
