@@ -14,7 +14,7 @@ const registerClicks = {
   popu: false
 }
 
-const Header = () => {
+const Header = ({onFilter}) => {
   const [search, setSearch] = useState();
   const dispatch = useDispatch();
 
@@ -48,7 +48,7 @@ const Header = () => {
           <input id="searchbar" type="search" name="country-name" list="countriesList" placeholder="search por a country" onChange={onHandleSearch}/>
           <DataList id="countriesList"/>
         </div>
-        <FiltersSelector/>
+        <FiltersSelector onFilter={onFilter}/>
         <SortingForm registerClicks={registerClicks}/>
       </div>
     </HeaderContainer>

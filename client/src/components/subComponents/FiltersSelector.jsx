@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterCountries } from '../../redux/actions/index.js';
 
-const FiltersSelector = () => {
+const FiltersSelector = ({onFilter}) => {
   const [conditions, setConditions] = useState([]);
   const activities = useSelector(state => state.activities);
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const FiltersSelector = () => {
     <div id="filters">
       <div id="cont-container">
         <label htmlFor='continents'>Search by continents:</label>
-        <select name="continent" id="continents" multiple size={6} onChange={onHandleFilter}>
+        <select name="continent" id="continents" multiple size={6} onChange={onHandleFilter} onClick={onFilter}>
           <option value="Asia">Asia</option>
           <option value="Africa">Africa</option>
           <option value="Antarctic">Antarctic</option>
@@ -38,7 +38,7 @@ const FiltersSelector = () => {
       </div>
       <div id="act-container">
         <label htmlFor="activities">Search by activities</label>
-        <select name="activities" id="activities" disabled={!activities.length ? true:false} onChange={onHandleFilter}>
+        <select name="activities" id="activities" disabled={!activities.length ? true:false} onChange={onHandleFilter} onClick={onFilter}>
           {activities.length && <option></option>}
           {activities?.map(a => <option key={a.id} value={a.id}>{a.name}</option> )}
         </select>

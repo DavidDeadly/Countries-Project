@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import CoutriesContainer from "./styled/CountriesContainer";
 import Header from "./subComponents/Header";
-import Pagination from "./subComponents/pagination";
+import Pagination from "./subComponents/Pagination";
 import CountryCard from "./subComponents/CountryCard";
 
 export default function Countries () {
@@ -15,11 +15,17 @@ export default function Countries () {
   const iLastCountry = currentPage * 10, iFirstCountry = iLastCountry - 10;
   const countryToShow = totalCountries.filter(c => c.filtered === false);
   const countries = countryToShow.slice(iFirstCountry, iLastCountry);
+
+  const handleOnFilter = (e) => {
+    console.log(e);
+    setCurrentPage(1);
+  }
+
   return (
     <React.Fragment>
       { code ? <></> : 
       ( <div>
-        <Header></Header>
+        <Header onFilter={handleOnFilter}/>
         <Pagination onPageChange={(n) => setCurrentPage(n)} numCountries={countryToShow.length}/>
         <CoutriesContainer>
         {countries.map(({ name, code, flagImg, continent, filtered }) => {
