@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import $ from "jquery";
 
 import HeaderContainer from '../styled/HeaderContainer.jsx';
-import ContinentsSelector from './ContinentsSelector.jsx';
+import FiltersSelector from './FiltersSelector.jsx';
 import DataList from './Datalist.jsx';
 import SortingForm from './SortingForm.jsx';
 import { querySearch } from '../../redux/actions/index.js';
@@ -48,7 +48,7 @@ const Header = () => {
           <input id="searchbar" type="search" name="country-name" list="countriesList" placeholder="search por a country" onChange={onHandleSearch}/>
           <DataList id="countriesList"/>
         </div>
-        <ContinentsSelector/>
+        <FiltersSelector/>
         <SortingForm registerClicks={registerClicks}/>
       </div>
     </HeaderContainer>

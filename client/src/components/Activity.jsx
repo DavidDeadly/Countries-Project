@@ -6,13 +6,13 @@ import axios from 'axios';
 import { getCountries } from "../redux/actions/index.js";
 
 const Activity = () => {
+  const { countries, activities } = useSelector(state => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [ activity, setActivity ] = useState({
     name: "", difficulty: 1, duration: 0, season: null,
-    countries: [], sCountries: [], complete: false
+    countries: countries.map(c => c.code), sCountries: [], complete: false
   });
-  const { countries, activities } = useSelector(state => state);
 
   const onHandleChange = ({target}) => {
     switch (target.name) {
@@ -30,30 +30,20 @@ const Activity = () => {
       case "duration":
         target.value >= 30 && target.value <= 120 && setActivity({...activity, duration: target.value});
         break;
-      case "countries":
-        if(target.value === "All") {
-          const [ countriesAct, sCountries ] = countries.reduce((a, b) => {
-            a[0].push(b.code);
-            a[1].push({name: b.name, code: b.code, img: b.flagImg});
-            return a;
-          }, [[],[]]);
-          setActivity({
-            ...activity, 
-            countries: countriesAct, sCountries
-          });
-        }else {
-          const { code, name, flagImg } = countries.find(c => c.code === target.value);
-          setActivity({
-            ...activity,
-            countries: [...activity.countries, code],
-            sCountries: [...activity.sCountries, { code, name, flagImg }]
-          })
-        }
-          break;
       default:
         setActivity({...activity, season: target.value});
         break;
     }
+  }
+
+  const onHandleCountries = e => {
+    const updatedCountries = [...e.target.selectedOptions].map(opt => opt.value)
+    setActivity({
+      ...activity,
+      countries: updatedCountries,
+      sCountries: countries.filter(c => updatedCountries.includes(c.code))
+    });
+
   }
 
   const onHandleSubmit = (e) => {
@@ -101,8 +91,7 @@ const Activity = () => {
           </label>
         </div>
         <label htmlFor="countries">Countries:</label>
-        <select type="search" name="countries" id="countries" defaultValue="All" onChange={onHandleChange}>
-          <option value="All">All</option>
+        <select type="search" name="countries" id="countries" onChange={onHandleCountries} multiple size={50}>
           {countries && countries.sort(({ name:a },{ name:b } ) => a > b ? 1:-1).map(c => <option key={c.code} value={c.code}>{c.name}</option> )}
         </select>
         <button type="submit">Create</button>

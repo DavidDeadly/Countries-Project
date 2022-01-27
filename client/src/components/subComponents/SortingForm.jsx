@@ -7,7 +7,6 @@ const SortingForm = ({registerClicks}) => {
   const dispatch = useDispatch();
 
   const onHandleParam = ({target}) => {
-    console.log(registerClicks);
     if(registerClicks[target.id]) {
       registerClicks[target.id] = false;
       target.checked = false;

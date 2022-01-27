@@ -9,7 +9,7 @@ export const filterCountries = (conditions, And) => {
       } 
       conditions.every(con => {
         if (c[con[0]] instanceof Array) {
-          const x = c[con[0]].find(e => e.id === con[1])
+          const x = c[con[0]].find(a => a.id === Number(con[1]))
           if(x) return true;
         }
         if(c[con[0]] === con[1]) return true;
@@ -27,7 +27,7 @@ export const filterCountries = (conditions, And) => {
       } 
       conditions.some(con => {
         if (c[con[0]] instanceof Array) {
-          const x = c[con[0]].find(e => e.id === con[1])
+          const x = c[con[0]].find(a => a.id === Number(con[1]))
           if(x) return true;
         }
         if(c[con[0]] === con[1]) return true;

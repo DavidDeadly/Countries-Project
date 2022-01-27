@@ -58,12 +58,17 @@ const HeaderContainer = styled.div`
     width: 35vw;
   }
 
-  #continents {
-    width: 80%;
+  #filters {
+    display: flex;
+  }
+
+  #continents,
+  #activities {
+    width: 50%;
     overflow-y: auto;
     text-align: center;
-
   }
+
 `
 
 export default HeaderContainer;
