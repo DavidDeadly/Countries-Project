@@ -16,11 +16,12 @@ const FiltersSelector = ({onFilter}) => {
         setConditions([...updatedConditions, actCond]);
       })()
     }
-    setConditions([...e.target.selectedOptions].map(opt => [opt.parentElement.name, opt.value]));
+    setConditions([...conditions, ...[...e.target.selectedOptions].map(opt => [opt.parentElement.name, opt.value])]);
   }
   
   useEffect(() => {
     dispatch(filterCountries(conditions));
+    console.log(conditions);
   }, [dispatch, conditions])
 
   return (
