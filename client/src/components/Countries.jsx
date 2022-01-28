@@ -99,7 +99,7 @@ const Countries = styled(PreCountries)`
       #continents,
       #activities {
         width: 50%;
-        overflow-y: auto;
+        overflow-y: hidden;
         text-align: center;
       }
     }

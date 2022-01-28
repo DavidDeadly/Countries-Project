@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, SORT_COUNTRIES, FILTER_SORT, QUERY_SEARCH, GET_DETAILED } from "./actions";
+import { GET_COUNTRIES, SORT_COUNTRIES, FILTER_SORT, QUERY_SEARCH, GET_DETAILED, filtering } from "./actions";
 
 const initialState = {
   countries: [],
@@ -27,7 +27,7 @@ const reducer =  (state = initialState, { type, payload }) => {
         countries: [...payload(state.countries)]
       }
     case FILTER_SORT:
-      const filteredCountries = payload(state.countries);
+      const filteredCountries = filtering(state.countries, payload);
       return {
         ...state,
         countries: filteredCountries,
