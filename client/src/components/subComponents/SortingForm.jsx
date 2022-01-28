@@ -7,6 +7,10 @@ const SortingForm = ({registerClicks}) => {
   const dispatch = useDispatch();
 
   const onHandleParam = ({target}) => {
+    const opts = ["popu", "alph"];
+    const index = opts.findIndex(o => o === target.id);
+    if(index === 0) registerClicks[opts[1]] = false;
+    if(index === 1) registerClicks[opts[0]] = false;
     if(registerClicks[target.id]) {
       registerClicks[target.id] = false;
       target.checked = false;

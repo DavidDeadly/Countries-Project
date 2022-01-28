@@ -5,12 +5,10 @@ const ButtonIn = styled.button`
   padding: 0.625rem;
   background-color: gray;
   color: white;
-  border-style: outset;
-  border-width: 5px;
-  border-color: black;
+  border: 5px outset black;
   border-radius: 15px;
   animation: press ease-in-out 5s infinite; 
-  transition: all .5s;
+  transition: 300ms ease;
   
   
   @media (min-width: 750px) {

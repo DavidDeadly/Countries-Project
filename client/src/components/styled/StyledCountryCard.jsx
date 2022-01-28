@@ -30,13 +30,14 @@ const StyledCountryCard = styled.div`
   }
 
   img, .ct-data {
+    filter: grayscale(.5);
     transition: 300ms ease-in-out;
   }
 
   &:hover  {
 
     img, .ct-data {
-      transform: scale(1.1);
+      transform: scale(1.025);
     }
 
     img {

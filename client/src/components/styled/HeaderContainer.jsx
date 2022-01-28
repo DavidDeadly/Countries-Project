@@ -24,6 +24,11 @@ const HeaderContainer = styled.div`
     font-family: 'Rubik Beastly', 'Courier New';
     color: gray;
     -webkit-text-stroke: 0.2rem black;
+    transition: 300ms transform ease;
+
+    :hover {
+      transform: scale(1.025);
+    }
   }
 
   #sr-cont {
@@ -47,7 +52,7 @@ const HeaderContainer = styled.div`
       padding: 2px 0 2px 25px;
       outline: 0;
       background-color: rgba(255, 255, 255, .5);
-      transition: 250ms ease-out;
+      transition: 250ms ease-in-out;
 
       :hover, :focus {
         border-style: solid;

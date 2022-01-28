@@ -22,7 +22,7 @@ const Pausebtn = styled(IconBtn)`
   background: transparent;
   border: hidden;
   border-radius: 50px;
-  transition: all .5s;
+  transition: 500ms ease;
 
   @media (max-width: 750px) {
     display: none;

@@ -21,6 +21,7 @@ const Header = ({onFilter}) => {
 
   const onHandleSearch = ({target}) => {
     setSearch(target.value);
+    onFilter();
   }
 
   useEffect(() => {

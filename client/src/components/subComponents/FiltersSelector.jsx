@@ -41,7 +41,7 @@ const FiltersSelector = ({onFilter}) => {
         </select>
       </div>
       <div id="act-container">
-        <label htmlFor="activities">Activities:</label>
+        <label htmlFor="activities">Activity:</label>
         <select name="activities" id="activities" disabled={!activities.length ? true:false} onChange={onHandleFilter} onClick={onFilter}>
           {activities.length && <option id="nullOpt"></option>}
           {activities?.map(a => <option key={a.id} value={a.id}>{a.name}</option> )}

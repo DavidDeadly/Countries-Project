@@ -10,6 +10,11 @@ const PagesList = styled.ul`
   margin: 25px auto;
   border: 3px solid black;
   border-radius: 5px;
+  transition: 300ms transform ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
   
   button {
     padding: 8px;
@@ -22,6 +27,10 @@ const PagesList = styled.ul`
     :hover {
       cursor: pointer;
       background-color: gray;
+    }
+
+    :active {
+      transform: translateY(5px);
     }
   }
 
