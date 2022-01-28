@@ -29,7 +29,7 @@ const reducer =  (state = initialState, { type, payload }) => {
     case SORT_COUNTRIES_DESC:
       return {
         ...state,
-        countries: state.countries.sort((a, b) => a[payload] > b[payload] ? -1 : 1),
+        countries: state.countries.sort((a, b) => a[payload] > b[payload] ? -1 : 1)
       }
     case FILTER_SORT:
       const filteredCountries = filtering(state.countries, payload);

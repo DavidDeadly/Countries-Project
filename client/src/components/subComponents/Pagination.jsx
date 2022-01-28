@@ -33,9 +33,9 @@ const PagesList = styled.ul`
 `
 
 const Pagination = ({numCountries, onPageChange, currentPage}) => {
-  const numPages = Math.ceil(numCountries/10)
+  const numPages = Math.ceil(numCountries/10);
   const pages = [];
-  for(let i = 1; i < numPages; i++) pages.push(i);
+  for(let i = 1; i <= numPages; i++) pages.push(i);
 
   const onHandlePageChange = (event, n) => {
     event.preventDefault();
