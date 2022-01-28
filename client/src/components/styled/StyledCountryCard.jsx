@@ -1,12 +1,8 @@
 import styled from "styled-components";
 
 const StyledCountryCard = styled.div`
-  display: ${props => props.filtered ? "none" : "flex"};
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  background-color: gray;
-  width: 100%;
+  display: ${props => props.filtered ? "none" : "block"};
+  position: relative;
   height: auto;
 
   a {
@@ -14,9 +10,42 @@ const StyledCountryCard = styled.div`
     color: black;
   }
 
-  & img {
+  img {
+    display: block;
     width: 100%;
     height: auto;
+  }
+
+  .ct-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    font-size: 1.2rem;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+  }
+
+  img, .ct-data {
+    transition: 300ms ease-in-out;
+  }
+
+  &:hover  {
+
+    img, .ct-data {
+      transform: scale(1.1);
+    }
+
+    img {
+      filter: blur(2px);
+    }
+
+    .ct-data {
+      opacity: 1;
+    }
   }
 `
 

@@ -8,15 +8,28 @@ const PagesList = styled.ul`
   list-style: none;
   max-width: max-content;
   margin: 25px auto;
+  border: 3px solid black;
+  border-radius: 5px;
+  
+  button {
+    padding: 8px;
+    width: max-content;
+    border: none;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, .6);
+    transition: 300ms ease;
+
+    :hover {
+      cursor: pointer;
+      background-color: gray;
+    }
+  }
 
   .cr-pg {
-    background-color: blue;
+    background-color: black;
+    color: white;
   }
 
-  button {
-    padding: 10px;
-    background-color: pink;
-  }
 `
 
 const Pagination = ({numCountries, onPageChange, currentPage}) => {

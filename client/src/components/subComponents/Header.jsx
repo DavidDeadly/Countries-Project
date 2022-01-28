@@ -1,6 +1,7 @@
 import React, { useEffect , useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
+import { SiElasticsearch } from "react-icons/si"
 import $ from "jquery";
 
 import HeaderContainer from '../styled/HeaderContainer.jsx';
@@ -35,11 +36,14 @@ const Header = ({onFilter}) => {
   return (
     <>
       <HeaderContainer>
-        <Link to="/">
-          <h1>Countries App</h1>
-        </Link>
+        <div>
+          <Link to="/">
+            <h1>Countries App</h1>
+          </Link>
+        </div>
         <div id="sr-cont">
-            <input id="searchbar" type="search" name="country-name" list="countriesList" placeholder="search por a country" onChange={onHandleSearch}/>
+            <SiElasticsearch id="sr-icon"/>
+            <input id="searchbar" type="search" name="country-name" list="countriesList" placeholder="Country..." onChange={onHandleSearch}/>
             <DataList id="countriesList"/>
         </div>
       </HeaderContainer>

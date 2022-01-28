@@ -24,13 +24,12 @@ const FiltersSelector = ({onFilter}) => {
   
   useEffect(() => {
     dispatch(filterCountries(conditions));
-    console.log(conditions);
   }, [dispatch, conditions])
 
   return (
     <div id="filters">
       <div id="cont-container">
-        <label htmlFor='continents'>By continents:</label>
+        <label htmlFor='continents'>Continents:</label>
         <select name="continent" id="continents" multiple size={6} onChange={onHandleFilter} onClick={onFilter}>
           <option value="Asia" style={{display: "none"}}>All</option>
           <option value="Asia">Asia</option>
@@ -42,13 +41,13 @@ const FiltersSelector = ({onFilter}) => {
         </select>
       </div>
       <div id="act-container">
-        <label htmlFor="activities">By activities:</label>
+        <label htmlFor="activities">Activities:</label>
         <select name="activities" id="activities" disabled={!activities.length ? true:false} onChange={onHandleFilter} onClick={onFilter}>
           {activities.length && <option id="nullOpt"></option>}
           {activities?.map(a => <option key={a.id} value={a.id}>{a.name}</option> )}
         </select>
       </div>
-      <h3>Filter</h3>
+      <h3>Filter By</h3>
     </div>
   );
 }

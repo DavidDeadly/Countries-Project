@@ -3,9 +3,19 @@ import styled from "styled-components";
 const CoutriesContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 5rem;
+  place-items: center;
+  grid-gap: 2rem;
   margin: auto;
-  width: 100%;
+  max-width: 80%;
+  min-height: 50vh;
+
+  div:last-child {
+    grid-column-end: 3;
+  }
+
+  @media (max-width: 850px) {
+    grid-template-columns: auto;
+  }
 `
 
 export default CoutriesContainer;

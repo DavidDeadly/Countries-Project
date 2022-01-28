@@ -7,12 +7,14 @@ const CountryCard = ({ name, flagImg, code, continent, filtered}) => {
   return (
       <StyledCountryCard filtered={filtered}>
         <Link to={`${code}`}>
-          <h1>{name}</h1>
-          <h3>{code}</h3>
-          <img src={flagImg} alt={`Flag of ${name}`}/>
-          <h2>{continent}</h2>
-        </Link>
-      </StyledCountryCard>
+            <img src={flagImg} alt={`Flag of ${name}`}/>
+            <div className="ct-data">
+              <h3>{name}</h3>
+              <p>{code}</p>
+              <p>{continent}</p>
+            </div>
+      </Link>
+    </StyledCountryCard>
   );
 }
 

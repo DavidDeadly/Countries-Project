@@ -28,14 +28,14 @@ const SortingForm = ({registerClicks}) => {
 
   return (
     <div id="sort">
-      <h3>Sort</h3>
+      <h3>Sort By</h3>
       <div>
         <label htmlFor="alph">
-          By name:
+          Name:
           <input className="st-input" type="radio" name="param" id="alph" value="name" onClick={onHandleParam}/>
         </label>
         <label htmlFor="popu">
-          By population:
+          Population:
           <input className="st-input" type="radio" name="param" id="popu" value="population"onClick={onHandleParam}/>
         </label>
       </div>

@@ -55,8 +55,8 @@ function PreCountries ({className}) {
 
 
 const Countries = styled(PreCountries)`
-  background-color: red;
   width: 80%;
+  padding: 5% 0;
   margin-left: 20%;
 
   #sidebar {
@@ -69,7 +69,7 @@ const Countries = styled(PreCountries)`
     left: 0;
     height: 100vh;
     width: 20%;
-    background-color: lightblue;
+    background-color: rgba(255, 255, 255, 0.6);
     font-size: 1.5rem;
 
     #btn-act {

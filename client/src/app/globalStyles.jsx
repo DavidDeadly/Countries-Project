@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import img from "../assets/static-gray-world-map.png"
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -36,6 +37,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    background: url(${img}) no-repeat fixed center;
+    background-size: cover;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
