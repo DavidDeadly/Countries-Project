@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 const PagesList = styled.ul`
   display: flex;
+  position: sticky;
+  top: 2%;
+  z-index: 2;
   justify-content: center;
   flex-wrap: wrap;
   list-style: none;

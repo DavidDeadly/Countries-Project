@@ -63,7 +63,7 @@ const CountryDetailed = () => {
                     <button onClick={activityDisappear}>X</button>
                     <h2>{a.name}</h2>
                     <p>Difficulty: <span>{a.difficulty}</span></p>
-                    <p>Duration: <span>{a.duration}</span></p>
+                    <p>Duration: <span>{a.duration} minutes</span></p>
                     <p>Season: <span>{a.season}</span></p>
                   </div>
                   <li key={a.id} className="act-names" id={a.name} onClick={activityShow}>{a.name}</li> 

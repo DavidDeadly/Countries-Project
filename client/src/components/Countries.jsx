@@ -30,11 +30,12 @@ function PreCountries ({className}) {
           <Pagination onPageChange={(n) => setCurrentPage(n)} numCountries={countryToShow.length} currentPage={currentPage}/>
         </Suspense>
         <CoutriesContainer>
-        {countries.map(({ name, code, flagImg, continent, filtered }) => {
+        {countries.map(({ name, code, flagImg, continent, filtered }, i) => {
           return (  
             <Suspense key={code} fallback={<h1>...</h1>}>
               <Link to={`${code}`}>
                 <CountryCard
+                  id={i === countries.length-1 ? "last" : null}
                   name={name} 
                   code={code} 
                   flagImg={flagImg} 

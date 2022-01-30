@@ -44,7 +44,6 @@ const StyledSorting = styled.div`
       :hover {
         transform: scale(1.1);
       }
-
     }
 
     #desc {

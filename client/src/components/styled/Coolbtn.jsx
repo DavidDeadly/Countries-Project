@@ -2,9 +2,9 @@ import React from 'react';
 import styled from "styled-components";
 
 
-const btn = ({className, Legend}) => {
+const btn = ({className, Legend, id}) => {
   return (
-    <button className={className}>{Legend}</button>
+    <button id={id} className={className}>{Legend}</button>
   );
 }
 
@@ -13,6 +13,7 @@ const Coolbtn = styled(btn)`
   top: ${(props) => props.top && props.top};
   left: ${(props) => props.left && props.left};
   right: ${(props) => props.right && props.right};
+  bottom: ${(props) => props.bottom && props.bottom};
   font-size: 1.5rem;
   padding: 10px;
   color: black;
@@ -21,7 +22,7 @@ const Coolbtn = styled(btn)`
   border-radius: 15px;
   outline: none;
   background-color: white;
-  transition: 250ms ease;
+  transition: 250ms ease, 50ms outline ease;
 
   :hover {
     cursor: pointer;
@@ -33,6 +34,10 @@ const Coolbtn = styled(btn)`
 
   :active {
     transform: translateY(10px);
+  }
+
+  :focus {
+    outline: 2px solid black;
   }
 `
 

@@ -9,8 +9,8 @@ const CoutriesContainer = styled.div`
   max-width: 80%;
   min-height: 50vh;
 
-  div:last-child {
-    grid-column-end: 3;
+  #last {
+    grid-column: 2/3;
   }
 
   @media (max-width: 850px) {
