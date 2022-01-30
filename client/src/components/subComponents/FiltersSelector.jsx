@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import $ from "jquery";
 
 import { filterCountries } from '../../redux/actions/index.js';
+import StyledFilters from '../styled/StyledFilters.jsx';
 
 const FiltersSelector = ({onFilter}) => {
   const [conditions, setConditions] = useState([]);
@@ -27,7 +28,7 @@ const FiltersSelector = ({onFilter}) => {
   }, [dispatch, conditions])
 
   return (
-    <div id="filters">
+    <StyledFilters>
       <div id="cont-container">
         <label htmlFor='continents'>Continents:</label>
         <select name="continent" id="continents" multiple size={6} onChange={onHandleFilter} onClick={onFilter}>
@@ -48,7 +49,7 @@ const FiltersSelector = ({onFilter}) => {
         </select>
       </div>
       <h3>Filter By</h3>
-    </div>
+    </StyledFilters>
   );
 }
 

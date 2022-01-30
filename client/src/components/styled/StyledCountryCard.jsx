@@ -5,11 +5,6 @@ const StyledCountryCard = styled.div`
   position: relative;
   height: auto;
 
-  a {
-    text-decoration: none;
-    color: black;
-  }
-
   img {
     display: block;
     width: 100%;
@@ -34,7 +29,7 @@ const StyledCountryCard = styled.div`
     transition: 300ms ease-in-out;
   }
 
-  &:hover  {
+  &:hover {
 
     img, .ct-data {
       transform: scale(1.025);

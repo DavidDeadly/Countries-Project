@@ -10,11 +10,3 @@ export function countriesSort({ param: p, desc }) {
     payload: p
   };
 }
-// Expected Input:
-// {
-//   desc: true;
-//   param: "name" / "population"
-// }
-
-//Reducer job:
-//  action.parload(countries);

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
+
+import StyledSorting from '../styled/StyledSorting.jsx';
 import { countriesSort } from "../../redux/actions/index.js";
 
 const SortingForm = ({registerClicks}) => {
@@ -31,7 +33,7 @@ const SortingForm = ({registerClicks}) => {
   }, [dispatch, sortingRules]);
 
   return (
-    <div id="sort">
+    <StyledSorting>
       <h3>Sort By</h3>
       <div>
         <label htmlFor="alph">
@@ -49,7 +51,7 @@ const SortingForm = ({registerClicks}) => {
           <input className="st-input" type="checkbox" name="desc" id="desc" onClick={onHandleDesc}/>
         </label>
       </div>
-    </div>
+    </StyledSorting>
   );
 }
 

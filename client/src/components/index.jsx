@@ -1,6 +1,5 @@
 import { lazy } from "react";
 
-// export { default as Activity } from "./Activity.jsx";
 export { default as Error } from "./Error.jsx";
 export { default as Countries } from "./Countries.jsx";
 export const Home = lazy(() => import("./Home.jsx"));

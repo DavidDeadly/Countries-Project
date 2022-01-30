@@ -5,6 +5,8 @@ import { SiElasticsearch } from "react-icons/si"
 import $ from "jquery";
 
 import HeaderContainer from '../styled/HeaderContainer.jsx';
+import Sidebar from '../styled/Sidebar.jsx';
+import Coolbtn from '../styled/Coolbtn.jsx';
 import FiltersSelector from './FiltersSelector.jsx';
 import DataList from './Datalist.jsx';
 import SortingForm from './SortingForm.jsx';
@@ -48,13 +50,13 @@ const Header = ({onFilter}) => {
             <DataList id="countriesList"/>
         </div>
       </HeaderContainer>
-      <div id="sidebar">
+      <Sidebar>
         <Link to="/activity">
-            <button id="btn-act">New Activity</button>
+          <Coolbtn Legend="New Activity" top="20px" right="45px"></Coolbtn>
         </Link>
         <FiltersSelector onFilter={onFilter}/>
         <SortingForm registerClicks={registerClicks}/>
-      </div>
+      </Sidebar>
     </>
   );
 }
