@@ -43,6 +43,11 @@ const StyledFilters = styled.div`
     :disabled {
       border: none;
       background-color: gray;
+      cursor: default;
+
+      :hover {
+        transform: translate(0);
+      }
     }
   }
 `

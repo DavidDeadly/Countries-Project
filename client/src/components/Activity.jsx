@@ -81,7 +81,10 @@ const Activity = () => {
     activity.complete = false;
     if(name) {
       axios.post("http://localhost:3001/activity", activity)
-        .then(res => alert(res.data))
+        .then(res => {
+          dispatch(getCountries())
+          alert(res.data)
+        })
         .catch(err => {
           alert("Coundn't create your Activity");
           console.error(err);

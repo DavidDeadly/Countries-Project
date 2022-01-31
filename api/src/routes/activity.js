@@ -16,9 +16,8 @@ activity.post("/", async (req, res) => {
 
     act.setCountries(countries);
 
-    res.status(201).json("Activity Succesfully Created");
+    res.status(201).json("Activity Successfully Created");
   } catch (err) {
-    console.error(err);
     res.sendStatus(400).json("Activity Not Created");
   }
 
