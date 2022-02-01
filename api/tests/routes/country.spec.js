@@ -24,7 +24,7 @@ const activity = {
   countries: [country.code]
 }
 
-describe("/Countries", () => {
+describe("Routes", () => {
   before(() => conn.authenticate()
   .catch((err) => {
     console.error("Unable to connect to the database:", err);
@@ -71,17 +71,21 @@ describe("/Countries", () => {
       await agent.get(`/countries/${country.code}`)
         .expect("Content-Type", /application\/json/);
     });
-    it("The response should contain New Zealand", async () => {
+    it("The response should contain New Zealand and all its info", async () => {
       const { body: { continent }} = await agent.get(`/countries/${country.code}`);
       expect(continent).equal("Oceania");
     })
   });
 
-  describe("POST /activity and json", () => {
+  describe("POST /activity", () => {
     it("Should get 201", async () => {
       await agent.post("/activity")
           .send(activity)
-          .expect(201)
+          .expect(201);
+    });
+    it("Should be json ", async () => {
+      await agent.post("/activity")
+          .send(activity)
           .expect("Content-Type", /application\/json/);
     });
     it("Should response with 'Activity Successfully Created'", async () => {
