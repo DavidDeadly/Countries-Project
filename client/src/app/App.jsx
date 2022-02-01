@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import { Suspense } from "react";
 
-import StyledLoadingPage from "../components/LoadingPage.jsx";
+import Loadingpage from "../components/index";
 import GlobalStyles from "./globalStyles.jsx";
 import routes from "./routes.js";
 
@@ -10,7 +10,7 @@ export default function App() {
   return (
     <>
       <GlobalStyles/>
-      <Suspense fallback={<StyledLoadingPage/>}>{element}</Suspense>
+      <Suspense fallback={<Loadingpage/>}>{element}</Suspense>
     </>
   );
 };
