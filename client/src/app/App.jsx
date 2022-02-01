@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import { Suspense } from "react";
 
-import Loadingpage from "../components/index";
+import Loadingpage from "../components/LoadingPage.jsx";
 import GlobalStyles from "./globalStyles.jsx";
 import routes from "./routes.js";
 

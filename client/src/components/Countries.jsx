@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import CoutriesContainer from "./styled/CountriesContainer";
 import Header from "./subComponents/Header";
 import styled from "styled-components";
+import PaginationPlaceholder from "./styled/PaginationPlaceholder.jsx";
+import CountryCardPlaceholder from "./styled/CountryCardPlaceholder.jsx";
 const Pagination = lazy(() => import("./subComponents/Pagination"));
 const CountryCard = lazy(() => import("./subComponents/CountryCard"));
 
@@ -26,13 +28,13 @@ function PreCountries ({className}) {
       { code ? <></> : 
       ( <div className={className}>
         <Header onFilter={handleOnFilter}/>
-        <Suspense fallback={<h1>{`<--------------------------->`}</h1>}>
+        <Suspense fallback={<PaginationPlaceholder/>}>
           <Pagination onPageChange={(n) => setCurrentPage(n)} numCountries={countryToShow.length} currentPage={currentPage}/>
         </Suspense>
         <CoutriesContainer>
         {countries.map(({ name, code, flagImg, continent, filtered }, i) => {
           return (  
-            <Suspense key={code} fallback={<h1>...</h1>}>
+            <Suspense key={code} fallback={<CountryCardPlaceholder/>}>
               <Link to={`${code}`}>
                 <CountryCard
                   id={i === countries.length-1 ? "last" : null}
