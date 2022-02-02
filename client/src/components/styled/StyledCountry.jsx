@@ -25,6 +25,7 @@ const StyledCountry = styled.div`
       align-items: center;
       border-radius: 10px;
       font-size: 1.5rem;
+      text-align: center;
       gap: 10%;
       width: 25%;
       height: 19.062rem;

@@ -1,12 +1,13 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Outlet, useParams, Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import CoutriesContainer from "./styled/CountriesContainer";
 import Header from "./subComponents/Header";
 import styled from "styled-components";
 import PaginationPlaceholder from "./styled/PaginationPlaceholder.jsx";
 import CountryCardPlaceholder from "./styled/CountryCardPlaceholder.jsx";
+import { getDetailed } from "../redux/actions";
 const Pagination = lazy(() => import("./subComponents/Pagination"));
 const CountryCard = lazy(() => import("./subComponents/CountryCard"));
 
@@ -14,6 +15,7 @@ function PreCountries ({className}) {
   const [currentPage, setCurrentPage] = useState(1)
   const { countries: totalCountries } = useSelector(state => state);
   const { code } = useParams();
+  const dispatch = useDispatch();
 
   const iLastCountry = currentPage * 10, iFirstCountry = iLastCountry - 10;
   const countryToShow = totalCountries.filter(c => c.filtered === false);
@@ -22,6 +24,10 @@ function PreCountries ({className}) {
   const handleOnFilter = () => {
     setCurrentPage(1);
   }
+
+  useEffect(() => {
+    dispatch(getDetailed(code));
+  }, [dispatch, code]);
 
   return (
     <React.Fragment>
