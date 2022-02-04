@@ -77,7 +77,9 @@ const Activity = () => {
     const { name } = activity;
     activity.sCountries = [];
     if(name) {
-      axios.post("http://localhost:3001/activity", activity)
+      // Local
+      // axios.post("http://localhost:3001/activity", activity)
+      axios.post("https://countries-svdb.herokuapp.com/activity", activity)
         .then(res => {
           dispatch(getCountries());
           alert(res.data);
