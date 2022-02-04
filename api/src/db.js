@@ -5,7 +5,7 @@ const path = require('path');
 const {
   NODE_ENV,
   DB_USER, DB_PASSWORD, DB_HOST, DB, DB_PORT,
-  DATABASE_URI, 
+  DATABASE_URL, 
 } = process.env;
 
 const sequelize = !NODE_ENV ? 
@@ -14,7 +14,7 @@ const sequelize = !NODE_ENV ?
       native: false,
     })
   :
-  new Sequelize(`${DATABASE_URI}`, {
+  new Sequelize(`${DATABASE_URL}`, {
       logging: false, 
       native: false,
       dialectOptions: {
