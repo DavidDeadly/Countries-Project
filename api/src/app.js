@@ -14,6 +14,7 @@ server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
   const allowedOrigins = [
+    "https://countriesapp-ten.vercel.app/",
     "http://localhost:3000",
     "http://192.168.1.56:3000"
   ]
