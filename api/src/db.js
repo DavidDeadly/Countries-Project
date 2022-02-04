@@ -4,20 +4,26 @@ const fs = require('fs');
 const path = require('path');
 const {
   NODE_ENV,
-  DB_USER, DB_PASSWORD, DB_HOST, DB, PORT, 
+  DB_USER, DB_PASSWORD, DB_HOST, DB, PORT,
+  DATABASE_URI, 
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PORT}/${DB}`, {
-    logging: false, 
-    native: false,
-    dialectOptions: !NODE_ENV ? {}
-    : {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false
+const sequelize = !NODE_ENV ? 
+  new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PORT}/${DB}`, {
+      logging: false, 
+      native: false,
+    })
+  :
+  new Sequelize(`${DATABASE_URI}`, {
+      logging: false, 
+      native: false,
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
       }
-    }
-  });
+    });
 
 sequelize.authenticate()
   .then(() => {
