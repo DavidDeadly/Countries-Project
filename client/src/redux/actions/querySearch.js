@@ -18,6 +18,10 @@ export function querySearch (input) {
           type: QUERY_SEARCH,
           payload: response.data
         })
-      )
+      ).catch(err =>  dispatch({
+        type: QUERY_SEARCH,
+        payload: { countries: [] },
+        queryError: true
+      }))
   } 
 }

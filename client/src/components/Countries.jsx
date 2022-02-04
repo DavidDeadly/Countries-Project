@@ -12,8 +12,8 @@ const Pagination = lazy(() => import("./subComponents/Pagination"));
 const CountryCard = lazy(() => import("./subComponents/CountryCard"));
 
 function PreCountries ({className}) {
-  const [currentPage, setCurrentPage] = useState(1)
-  const { countries: totalCountries } = useSelector(state => state);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { countries: totalCountries, queryError } = useSelector(state => state);
   const { code } = useParams();
   const dispatch = useDispatch();
 
@@ -38,7 +38,8 @@ function PreCountries ({className}) {
           <Pagination onPageChange={(n) => setCurrentPage(n)} numCountries={countryToShow.length} currentPage={currentPage}/>
         </Suspense>
         <CoutriesContainer>
-        {countries.map(({ name, code, flagImg, continent, filtered }, i) => {
+        { !countries.length && queryError ? <h1 style={{textAlign: "center"}}>No matches</h1>
+        : countries.map(({ name, code, flagImg, continent, filtered }, i) => {
           return (  
             <Suspense key={code} fallback={<CountryCardPlaceholder/>}>
               <Link to={`${code}`}>

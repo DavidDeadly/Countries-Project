@@ -4,7 +4,8 @@ const initialState = {
   countries: [],
   activities: [],
   filteredState: [],
-  country: null
+  country: null,
+  queryError: false
 }
 
 const reducer =  (state = initialState, { type, payload }) => {
@@ -14,7 +15,8 @@ const reducer =  (state = initialState, { type, payload }) => {
       return {
         ...state,
         activities: payload.activities,
-        countries: payload.countries
+        countries: payload.countries,
+        queryError: false
       }
     case GET_DETAILED:
       return {
@@ -42,6 +44,13 @@ const reducer =  (state = initialState, { type, payload }) => {
         }, [])
       }
     case QUERY_SEARCH:
+      if(!payload.countries.length) {
+        return {
+          ...state,
+          countries: payload.countries,
+          queryError: true
+        }
+      }
       const updatedFetch = payload.countries.map(c => {
         if(state.filteredState.includes(c.code)) c.filtered = true;
         else c.filtered = false;
@@ -49,7 +58,8 @@ const reducer =  (state = initialState, { type, payload }) => {
       })
       return {
         ...state,
-        countries: updatedFetch
+        countries: updatedFetch,
+        queryError: false
       }
     default:
       return state;

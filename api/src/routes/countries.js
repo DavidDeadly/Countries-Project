@@ -24,7 +24,7 @@ countries.get("/", async (req, res) => {
 
   countriesList.length ? res.status(200).json({countries: countriesList, activities})
   : (() => {
-    if(name) return res.status(404).send("No matches");
+    if(name) return res.sendStatus(404);
     fetch("https://restcountries.com/v3/all")
       .then(r => r.json())
       .then(countries => {

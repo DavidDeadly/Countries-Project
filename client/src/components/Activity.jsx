@@ -15,7 +15,7 @@ const Activity = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [ activity, setActivity ] = useState({
-    name: "", difficulty: 1, duration: 0, season: "Summer",
+    name: "", difficulty: 1, duration: 30, season: "Summer",
     countries: countries.map(c => c.code), sCountries: [], errors: []
   });
 
@@ -47,12 +47,10 @@ const Activity = () => {
         target.value >= 30 && target.value <= 360 ? 
         (() => {
           target.className = "valid";
-          $("#ct-btn")[0].disabled = false;
           setActivity({...activity, duration: target.value, errors: []});
         })() 
         : (() => {
           target.className = "invalid";
-          $("#ct-btn")[0].disabled = true;
           const error = [];
           error[1] = "Range 30 - 360";
           setActivity({...activity, errors: error});
@@ -76,19 +74,15 @@ const Activity = () => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    const { name} = activity;
+    const { name } = activity;
     activity.sCountries = [];
-    activity.complete = false;
     if(name) {
       axios.post("http://localhost:3001/activity", activity)
         .then(res => {
-          dispatch(getCountries())
-          alert(res.data)
+          dispatch(getCountries());
+          alert(res.data);
         })
-        .catch(err => {
-          alert("Coundn't create your Activity");
-          console.error(err);
-        });
+        .catch(err => alert("Coundn't create your Activity"));
       navigate("/countries");
     }
   }
@@ -107,7 +101,7 @@ const Activity = () => {
           <label className="main-lb" htmlFor="diff">Difficulty:  {activity.difficulty}</label>
             <input className="valid" type="range" name="difficulty" min={1} max={5} onChange={onHandleChange} value={activity.difficulty}/>
           <label className="main-lb" htmlFor="dur">Duration: {activity.errors[1]}</label>
-            <input className="valid" type="number" name="duration" placeholder="In minutes" onChange={onHandleChange}/>
+            <input className="valid" type="number" name="duration" placeholder="In minutes" onChange={onHandleChange} value={activity.duration}/>
           <p className="main-lb">Season:</p>
           <div id="seasons">
             <label htmlFor="Summer">Summer
